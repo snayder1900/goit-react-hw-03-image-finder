@@ -1,16 +1,15 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
 export const Modal = ({ src, alt, onClose }) => {
-  const handleKeyDown = (event) => {
-    if (event.code === 'Escape') {
-      onClose();
-    }
-  };
-  
   useEffect(() => {
+    const handleKeyDown = event => {
+      if (event.code === 'Escape') {
+        onClose();
+      }
+    };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
+  });
 
   return (
     <div className="overlay" onClick={onClose}>
